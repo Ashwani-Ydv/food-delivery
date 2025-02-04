@@ -241,3 +241,31 @@ document.querySelector(".prev").addEventListener("click", () => {
     index = (index - 1 + foodItems.length) % foodItems.length;
     carouselTrack.style.transform = `translateX(-${index * 300}px)`;
 });
+
+// Video Play/Pause Button
+const video = document.getElementById("promo-video");
+const playBtn = document.getElementById("play-btn");
+
+// Show play button when video is paused
+video.addEventListener("pause", () => {
+    playBtn.style.display = "block";
+});
+
+// Hide play button when video plays
+video.addEventListener("play", () => {
+    playBtn.style.display = "none";
+});
+
+// Toggle Play/Pause on Click
+playBtn.addEventListener("click", () => {
+    video.play();
+    playBtn.style.display = "none";
+});
+
+// Click to Pause Video
+video.addEventListener("click", () => {
+    if (!video.paused) {
+        video.pause();
+    }
+});
+
