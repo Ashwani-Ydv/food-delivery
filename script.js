@@ -269,3 +269,52 @@ video.addEventListener("click", () => {
     }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("JavaScript is working!");
+
+    // Select Cart Elements
+    const cartIcon = document.getElementById("cart-icon");
+    const cartModal = document.getElementById("cart-modal");
+    const closeCartBtn = document.getElementById("close-cart");
+    const backToMenuBtn = document.getElementById("back-to-menu");
+
+    // Debugging: Check if elements exist
+    console.log("Cart Icon Found:", cartIcon);
+    console.log("Cart Modal Found:", cartModal);
+
+    if (!cartIcon) {
+        console.error("Cart icon NOT FOUND! Check your HTML.");
+        return;
+    }
+
+    // Open Cart Modal
+    cartIcon.addEventListener("click", () => {
+        console.log("Cart Icon Clicked!");
+        cartModal.style.display = "flex";
+        document.body.style.overflow = "hidden"; // Prevent background scroll
+    });
+
+    // Close Cart Modal
+    closeCartBtn.addEventListener("click", () => {
+        console.log("Close Cart Clicked!");
+        cartModal.style.display = "none";
+        document.body.style.overflow = "auto";
+    });
+
+    backToMenuBtn.addEventListener("click", () => {
+        console.log("Back to Menu Clicked!");
+        cartModal.style.display = "none";
+        document.body.style.overflow = "auto";
+    });
+
+    // Close Modal When Clicking Outside
+    cartModal.addEventListener("click", (event) => {
+        if (event.target === cartModal) {
+            console.log("Clicked Outside Modal!");
+            cartModal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+    });
+});
+
+
