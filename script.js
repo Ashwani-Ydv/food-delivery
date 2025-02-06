@@ -242,6 +242,63 @@ document.querySelector(".prev").addEventListener("click", () => {
     carouselTrack.style.transform = `translateX(-${index * 300}px)`;
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("JavaScript is loaded!");
+
+    // Select Request Dish Elements
+    const requestDishBtn = document.getElementById("request-dish-btn");
+    const requestModal = document.getElementById("request-modal");
+    const closeRequestBtn = document.getElementById("close-request");
+    const submitRequestBtn = document.getElementById("submit-request");
+    const requestForm = document.getElementById("request-form");
+
+    // Debugging: Check if elements exist
+    console.log("Request Dish Button:", requestDishBtn);
+    console.log("Request Modal:", requestModal);
+
+    if (!requestDishBtn) {
+        console.error("Request Dish button NOT FOUND! Check your HTML.");
+        return;
+    }
+
+    // ✅ Open Request Modal
+    requestDishBtn.addEventListener("click", () => {
+        console.log("🍽 Request a Dish Clicked!");
+        requestModal.style.display = "flex";
+        document.body.style.overflow = "hidden"; // Disable scrolling
+    });
+
+    // ✅ Close Request Modal (Clicking Close Button)
+    closeRequestBtn.addEventListener("click", () => {
+        console.log("❌ Close Request Clicked!");
+        requestModal.style.display = "none";
+        document.body.style.overflow = "auto";
+    });
+
+    // ✅ Close Request Modal (Clicking Outside)
+    requestModal.addEventListener("click", (event) => {
+        if (event.target === requestModal) {
+            console.log("🖱 Clicked Outside Modal!");
+            requestModal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+    });
+
+    // ✅ Handle Form Submission
+    requestForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        console.log("✅ Dish Requested:", document.getElementById("dish-name").value);
+        
+        // Close the modal after submission
+        requestModal.style.display = "none";
+        document.body.style.overflow = "auto";
+
+        // Show an alert (you can replace this with a custom success message)
+        alert("Your dish request has been submitted!");
+    });
+});
+
+
 // Video Play/Pause Button
 const video = document.getElementById("promo-video");
 const playBtn = document.getElementById("play-btn");
